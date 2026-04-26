@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GROUND | Чоловічий клуб</title>
+    <title>Зруб | Закритий чоловічий клуб</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html { scroll-behavior: smooth; }
@@ -65,7 +65,6 @@
         const totalSections = 6;
         let globalQuizLink = "#";
 
-        // Читаємо data.json напряму з папки
         fetch('data.json')
             .then(res => res.json())
             .then(data => {
@@ -106,7 +105,7 @@
                 initScrollObserver();
                 updateNavUI();
             })
-            .catch(err => alert("Помилка: Переконайся, що data.json лежить поруч з index.html і ти відкрив сайт через Live Server або хостинг (а не просто подвійним кліком по файлу)."));
+            .catch(err => alert("Помилка data.json"));
 
         function scrollToSection(index) {
             document.getElementById(`section-${index}`).scrollIntoView({ behavior: 'smooth' });
