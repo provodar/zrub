@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GROUND | Чоловічий клуб</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-300 font-sans antialiased selection:bg-zinc-700 selection:text-white pb-20">
+
+    <div id="hero-bg" class="fixed inset-0 bg-cover bg-center opacity-30 grayscale pointer-events-none transition-opacity duration-1000 z-0"></div>
+    <div class="fixed inset-0 bg-zinc-950/60 pointer-events-none z-0"></div>
+
+    <main id="content-container" class="relative z-10 w-full opacity-0 transition-opacity duration-500">
+        
+        <section id="section-0" class="min-h-screen flex flex-col justify-center max-w-5xl mx-auto px-6 md:px-12 py-20 text-left">
+            <div class="inline-block border border-zinc-700 px-3 py-1 text-xs uppercase tracking-widest text-zinc-400 mb-6 w-max">Львів • Офлайн</div>
+            <h1 id="hero-title" class="text-6xl md:text-9xl font-bold tracking-tighter text-white uppercase leading-none mb-6"></h1>
+            <p id="hero-subtitle" class="text-2xl md:text-3xl text-zinc-400 font-light max-w-2xl leading-tight"></p>
+        </section>
+
+        <section id="section-1" class="min-h-screen flex flex-col justify-center max-w-5xl mx-auto px-6 md:px-12 py-20 border-t border-zinc-800/50">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-10">Контекст</h2>
+            <p id="about-main" class="text-2xl md:text-4xl font-light leading-relaxed text-white mb-6"></p>
+            <p id="about-secondary" class="text-xl md:text-2xl font-light leading-relaxed text-zinc-500"></p>
+        </section>
+
+        <section id="section-2" class="min-h-screen flex flex-col justify-center max-w-5xl mx-auto px-6 md:px-12 py-20 border-t border-zinc-800/50 text-left">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-10 text-left">Що ми робимо</h2>
+            <div id="disciplines-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800 w-full"></div>
+        </section>
+
+        <section id="section-3" class="min-h-screen flex flex-col justify-center max-w-5xl mx-auto px-6 md:px-12 py-20 border-t border-zinc-800/50">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-10">Регламент</h2>
+            <div id="rules-list" class="space-y-10"></div>
+        </section>
+
+        <section id="section-4" class="min-h-screen flex flex-col justify-center max-w-5xl mx-auto px-6 md:px-12 py-20 border-t border-zinc-800/50">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-10">Питання</h2>
+            <div id="faq-list" class="space-y-12 max-h-[70vh] overflow-y-auto pr-4 custom-scrollbar"></div>
+        </section>
+
+        <section id="section-5" class="min-h-screen flex flex-col justify-center items-center text-center max-w-5xl mx-auto px-6 md:px-12 py-20 border-t border-zinc-800/50">
+            <h2 id="footer-title" class="text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter mb-8"></h2>
+            <p id="footer-text" class="text-xl text-zinc-500 mb-12 max-w-xl mx-auto"></p>
+            <a id="final-cta-link" href="#" target="_blank" class="inline-block bg-white text-black px-16 py-6 font-bold tracking-widest uppercase hover:bg-zinc-300 transition-colors"></a>
+        </section>
+    </main>
+
+    <footer class="fixed bottom-0 left-0 w-full z-50 border-t border-zinc-800 bg-zinc-950/90 backdrop-blur-md p-4 md:px-12 flex justify-between items-center">
+        <button id="btn-prev" class="text-zinc-500 hover:text-white uppercase text-sm tracking-widest font-bold px-4 py-2 disabled:opacity-20 transition-colors">&larr; Назад</button>
+        <div class="flex space-x-2" id="progress-dots"></div>
+        <button id="btn-next" class="text-white uppercase text-sm tracking-widest font-bold px-4 py-2 hover:text-zinc-400 transition-colors">Далі &rarr;</button>
+    </footer>
+
+    <script>
+        let currentSectionIndex = 0;
+        const totalSections = 6;
+        let globalQuizLink = "#";
+
+        // Читаємо data.json напряму з папки
+        fetch('data.json')
+            .then(res => res.json())
+            .then(data => {
+                globalQuizLink = data.quizLink;
+                document.getElementById('hero-title').innerText = data.hero.title;
+                document.getElementById('hero-subtitle').innerText = data.hero.subtitle;
+                if(data.hero.bg) document.getElementById('hero-bg').style.backgroundImage = `url('${data.hero.bg}')`;
+                
+                document.getElementById('about-main').innerText = data.about.main;
+                document.getElementById('about-secondary').innerText = data.about.secondary;
+
+                const discGrid = document.getElementById('disciplines-grid');
+                data.disciplines.forEach(d => {
+                    discGrid.innerHTML += `<div class="bg-zinc-950 p-6 md:p-10 flex flex-col justify-center"><h3 class="text-white font-bold text-xl mb-3">${d.title}</h3><p class="text-zinc-400 text-base md:text-lg leading-relaxed">${d.text}</p></div>`;
+                });
+
+                const rulesList = document.getElementById('rules-list');
+                data.rules.forEach(r => {
+                    rulesList.innerHTML += `<div class="border-l-2 border-zinc-700 pl-6"><h3 class="text-xl text-white font-bold mb-1">${r.title}</h3><p class="text-zinc-400 text-base md:text-lg">${r.text}</p></div>`;
+                });
+
+                const faqList = document.getElementById('faq-list');
+                data.faq.forEach(f => {
+                    faqList.innerHTML += `<div><p class="font-bold text-white mb-2 text-xl">${f.q}</p><p class="text-zinc-400 text-base md:text-lg leading-relaxed">${f.a}</p></div>`;
+                });
+
+                document.getElementById('footer-title').innerText = data.footer.title;
+                document.getElementById('footer-text').innerText = data.footer.text;
+                document.getElementById('final-cta-link').innerText = data.footer.cta;
+                document.getElementById('final-cta-link').href = data.quizLink;
+
+                const dotsContainer = document.getElementById('progress-dots');
+                for (let i = 0; i < totalSections; i++) {
+                    dotsContainer.innerHTML += `<div class="w-8 md:w-12 h-1 bg-zinc-800 transition-colors cursor-pointer" onclick="scrollToSection(${i})" id="dot-${i}"></div>`;
+                }
+
+                document.getElementById('content-container').classList.remove('opacity-0');
+                initScrollObserver();
+                updateNavUI();
+            })
+            .catch(err => alert("Помилка: Переконайся, що data.json лежить поруч з index.html і ти відкрив сайт через Live Server або хостинг (а не просто подвійним кліком по файлу)."));
+
+        function scrollToSection(index) {
+            document.getElementById(`section-${index}`).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function initScrollObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        currentSectionIndex = parseInt(entry.target.id.split('-')[1]);
+                        updateNavUI();
+                    }
+                });
+            }, { threshold: 0.5 });
+            for (let i = 0; i < totalSections; i++) observer.observe(document.getElementById(`section-${i}`));
+        }
+
+        function updateNavUI() {
+            for (let i = 0; i < totalSections; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if (dot) {
+                    dot.classList.toggle('bg-white', i <= currentSectionIndex);
+                    dot.classList.toggle('bg-zinc-800', i > currentSectionIndex);
+                }
+            }
+            document.getElementById('btn-prev').disabled = currentSectionIndex === 0;
+            const btnNext = document.getElementById('btn-next');
+            if (currentSectionIndex === totalSections - 1) {
+                btnNext.innerHTML = 'В анкету &rarr;';
+            } else {
+                btnNext.innerHTML = 'Далі &rarr;';
+            }
+        }
+
+        document.getElementById('btn-next').addEventListener('click', () => {
+            if (currentSectionIndex < totalSections - 1) scrollToSection(currentSectionIndex + 1);
+            else window.open(globalQuizLink, '_blank');
+        });
+        document.getElementById('btn-prev').addEventListener('click', () => scrollToSection(currentSectionIndex - 1));
+    </script>
+</body>
+</html>
