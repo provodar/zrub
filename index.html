@@ -25,62 +25,47 @@
         }
     </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 font-sans antialiased">
+<body class="bg-zinc-950 text-zinc-100 font-sans antialiased selection:bg-zinc-700 selection:text-white">
 
-    <!-- Глобальна текстура -->
-    <div id="global-bg" class="fixed inset-0 z-[-1] bg-cover bg-center opacity-[0.15] grayscale pointer-events-none"></div>
+    <!-- Глобальна текстура дерева -->
+    <div id="global-bg" class="fixed inset-0 z-[-1] bg-cover bg-center opacity-[0.12] grayscale pointer-events-none"></div>
 
-    <!-- Плаваючий брендинг (з'являється після 1 екрану) -->
+    <!-- Плаваючий брендинг (тільки на десктопі, з'являється після 1 екрану) -->
     <div id="floating-brand" class="fixed top-8 right-6 md:top-10 md:right-12 z-40 text-right transition-opacity duration-500 opacity-0 pointer-events-none hidden md:block">
         <div id="brand-title" class="text-xl md:text-2xl font-black uppercase tracking-widest text-white/50"></div>
         <div id="brand-subtitle" class="text-[10px] md:text-xs text-zinc-500 uppercase tracking-widest mt-1"></div>
     </div>
 
-    <!-- Навігація стрілками -->
-    <div class="fixed bottom-8 right-6 md:right-12 flex flex-col gap-3 z-50">
-        <button id="btn-up" class="w-12 h-12 flex items-center justify-center rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-700 transition-all opacity-50 pointer-events-none backdrop-blur-md">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
-        </button>
-        <button id="btn-down" class="w-12 h-12 flex items-center justify-center rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-700 transition-all backdrop-blur-md">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-    </div>
-
     <div id="scroll-container" class="hidden-content relative w-full">
         
         <!-- 01. Hero -->
-        <section id="hero" class="min-h-[100dvh] flex flex-col justify-center px-6 py-12 md:px-12 border-b border-zinc-800/50 bg-cover bg-center relative">
+        <section id="hero" class="min-h-[100dvh] flex flex-col justify-center px-6 pt-12 pb-24 md:px-12 border-b border-zinc-800/50 bg-cover bg-center relative">
             <div class="absolute inset-0 bg-zinc-950/40 z-0"></div>
             <div class="max-w-5xl mx-auto w-full relative z-10">
+                <div class="inline-block border border-zinc-700 px-3 py-1 text-xs uppercase tracking-widest text-zinc-400 mb-6 w-max backdrop-blur-sm">Львів • Офлайн</div>
                 <h1 id="hero-title" class="text-6xl md:text-8xl font-black uppercase tracking-tighter text-white mb-6 drop-shadow-lg"></h1>
                 <div id="hero-subtitle" class="flex flex-col items-start text-lg md:text-2xl text-zinc-200 max-w-2xl drop-shadow-md"></div>
             </div>
         </section>
 
-        <!-- 02. Контекст -->
-        <section class="min-h-[100dvh] flex flex-col justify-center px-6 py-12 md:px-12 border-b border-zinc-800/50">
+        <!-- 02. Причина -->
+        <section class="min-h-[100dvh] flex flex-col justify-center px-6 pt-12 pb-24 md:px-12 border-b border-zinc-800/50">
             <div class="max-w-6xl mx-auto w-full">
-                <!-- items-center вирівняє текст по центру відносно високої фотографії -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-center">
-                    
-                    <!-- Колонка 1: Текст (без фону, рамок і зайвих відступів) -->
                     <div class="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1">
                         <h2 id="title-about" class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-8"></h2>
                         <p id="about-main" class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-8 text-zinc-100 whitespace-pre-line"></p>
                         <p id="about-secondary" class="text-lg md:text-xl text-zinc-300 leading-relaxed"></p>
                     </div>
-
-                    <!-- Колонка 2: Фото (збільшена висота: lg:min-h-[600px] або навіть lg:min-h-[700px]) -->
-                    <div class="lg:col-span-5 h-[450px] lg:min-h-[650px] relative overflow-hidden order-1 lg:order-2">
+                    <div class="lg:col-span-5 h-[450px] lg:min-h-[650px] relative overflow-hidden order-1 lg:order-2 rounded-sm border border-zinc-800/50">
                         <img src="image.jpg" alt="Група" class="absolute inset-0 w-full h-full object-cover object-center grayscale">
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- 03. Фундамент -->
-        <section class="min-h-[100dvh] flex flex-col justify-center px-6 py-12 md:px-12 border-b border-zinc-800/50">
+        <!-- 03. Основа -->
+        <section class="min-h-[100dvh] flex flex-col justify-center px-6 pt-12 pb-24 md:px-12 border-b border-zinc-800/50">
             <div class="max-w-5xl mx-auto w-full">
                 <h2 id="title-principles" class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-8 pl-2"></h2>
                 <div id="principles-grid" class="grid grid-cols-1 md:grid-cols-2 gap-px bg-zinc-700 w-full shadow-2xl"></div>
@@ -88,16 +73,17 @@
         </section>
 
         <!-- 04. Практика -->
-        <section class="min-h-[100dvh] flex flex-col justify-center px-6 py-12 md:px-12 border-b border-zinc-800/50">
-            <div class="max-w-5xl mx-auto w-full">
+        <section class="min-h-[100dvh] flex flex-col justify-center px-6 pt-12 pb-24 md:px-12 border-b border-zinc-800/50">
+            <div class="max-w-6xl mx-auto w-full">
                 <h2 id="title-disciplines" class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-8 pl-2"></h2>
-                <div id="disciplines-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-px bg-zinc-700 w-full shadow-2xl"></div>
+                <div id="disciplines-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-zinc-700 w-full shadow-2xl"></div>
             </div>
         </section>
 
         <!-- 05. Рамки -->
-        <section class="min-h-[100dvh] flex flex-col justify-center px-6 py-12 md:px-12 border-b border-zinc-800/50">
-            <div class="max-w-5xl mx-auto w-full bg-zinc-950/80 backdrop-blur-md p-8 md:p-12 border border-zinc-800/50 rounded-sm">
+        <section class="min-h-[100dvh] flex flex-col justify-center px-6 pt-12 pb-24 md:px-12 border-b border-zinc-800/50 relative overflow-hidden bg-zinc-950">
+            <div class="absolute bottom-0 left-0 right-0 h-[40dvh] z-0 bg-cover bg-bottom grayscale opacity-10 pointer-events-none" style="background-image: url('image2.jpg');"></div>
+            <div class="max-w-5xl mx-auto w-full bg-zinc-950/80 backdrop-blur-md p-8 md:p-12 border border-zinc-800/50 rounded-sm relative z-10">
                 <h2 id="title-rules" class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-10"></h2>
                 <div id="rules-list" class="flex flex-col gap-10"></div>
             </div>
@@ -112,7 +98,7 @@
         </section>
 
         <!-- 07. Footer -->
-        <section class="min-h-[100dvh] flex flex-col items-center justify-center text-center px-6 py-12 bg-zinc-950/90 backdrop-blur-md">
+        <section class="min-h-[100dvh] flex flex-col items-center justify-center text-center px-6 pt-12 pb-24 bg-zinc-950/90 backdrop-blur-md">
             <h2 id="footer-title" class="text-5xl md:text-6xl font-bold mb-6 text-white"></h2>
             <p id="footer-text" class="text-xl text-zinc-300 mb-10"></p>
             <a id="footer-cta" href="#" target="_blank" class="bg-white text-zinc-950 font-bold uppercase tracking-widest py-5 px-12 hover:bg-zinc-200 transition-colors shadow-lg"></a>
@@ -120,86 +106,86 @@
         
     </div>
 
+    <!-- Нижня навігація -->
+    <footer class="fixed bottom-0 left-0 w-full z-50 border-t border-zinc-800 bg-zinc-950/90 backdrop-blur-md p-4 md:px-12 flex justify-between items-center transition-opacity duration-500" id="bottom-nav">
+        <button id="btn-prev" class="text-zinc-500 hover:text-white uppercase text-xs md:text-sm tracking-widest font-bold px-2 md:px-4 py-2 disabled:opacity-20 transition-colors">&larr; Назад</button>
+        <div class="flex space-x-1 md:space-x-2" id="progress-dots"></div>
+        <button id="btn-next" class="text-white uppercase text-xs md:text-sm tracking-widest font-bold px-2 md:px-4 py-2 hover:text-zinc-400 transition-colors">Далі &rarr;</button>
+    </footer>
+
     <script>
         let currentIdx = 0;
         let sections = [];
+        window.globalQuizLink = "#";
 
         async function loadData() {
             try {
                 const response = await fetch('data.json');
                 const data = await response.json();
 
-                // Плаваючий брендинг (беремо перший рядок підзаголовка)
-                document.getElementById('brand-title').innerText = data.hero.title;
-                const shortBrandSubtitle = data.hero.subtitle.split('\n')[0].trim();
-                document.getElementById('brand-subtitle').innerText = shortBrandSubtitle;
+                window.globalQuizLink = data.quizLink;
 
-                // Hero & Глобальний фон
+                document.getElementById('brand-title').innerText = data.hero.title;
+                const shortSub = data.hero.subtitle.split('\n')[0].trim();
+                document.getElementById('brand-subtitle').innerText = shortSub;
+
                 document.getElementById('hero-title').innerText = data.hero.title;
                 if (data.hero.bg) {
                     document.getElementById('hero').style.backgroundImage = `url('${data.hero.bg}')`;
                     document.getElementById('global-bg').style.backgroundImage = `url('${data.hero.bg}')`;
                 }
 
-                // Subtitle 
                 const lines = data.hero.subtitle.split('\n').filter(line => line.trim() !== '');
                 document.getElementById('hero-subtitle').innerHTML = lines.map(line => 
                     `<span class="bg-zinc-950/80 backdrop-blur-sm text-white px-4 py-2 md:py-2 mb-4 last:mb-0 box-decoration-clone leading-tight">${line}</span>`
                 ).join('');
 
-                // About
                 document.getElementById('title-about').innerText = data.about.sectionTitle;
                 document.getElementById('about-main').innerText = data.about.main;
                 document.getElementById('about-secondary').innerText = data.about.secondary;
 
-                // Principles
                 document.getElementById('title-principles').innerText = data.principles.sectionTitle;
                 const prinGrid = document.getElementById('principles-grid');
                 data.principles.items.forEach(p => {
                     prinGrid.innerHTML += `
                         <div class="bg-zinc-950/90 backdrop-blur-md p-8 md:p-10 flex flex-col justify-center min-h-[160px] md:min-h-[200px] hover:bg-zinc-900 transition-colors">
                             <h3 class="text-white font-bold text-xl md:text-2xl mb-3">${p.title}</h3>
-                            <p class="text-zinc-300 text-base md:text-lg leading-relaxed">${p.text}</p>
+                            <p class="text-zinc-200 text-base md:text-lg leading-relaxed">${p.text}</p>
                         </div>`;
                 });
 
-                // Practice
                 document.getElementById('title-disciplines').innerText = data.disciplines.sectionTitle;
                 const discGrid = document.getElementById('disciplines-grid');
                 data.disciplines.items.forEach(d => {
                     discGrid.innerHTML += `
-                        <div class="bg-zinc-950/90 backdrop-blur-md p-8 md:p-10 flex flex-col justify-center min-h-[160px] md:min-h-[200px] hover:bg-zinc-900 transition-colors">
+                        <div class="bg-zinc-950/90 backdrop-blur-md p-8 md:p-10 flex flex-col justify-center min-h-[160px] md:min-h-[220px] hover:bg-zinc-900 transition-colors">
                             <h3 class="text-white font-bold text-xl md:text-2xl mb-3">${d.title}</h3>
-                            <p class="text-zinc-300 text-base md:text-lg leading-relaxed">${d.text}</p>
+                            <p class="text-zinc-200 text-base md:text-lg leading-relaxed">${d.text}</p>
                         </div>`;
                 });
 
-                // Rules
                 document.getElementById('title-rules').innerText = data.rules.sectionTitle;
                 const rulesList = document.getElementById('rules-list');
                 data.rules.items.forEach(r => {
                     rulesList.innerHTML += `
                         <div class="border-l-2 border-zinc-600 pl-5 md:pl-8">
                             <h3 class="text-white font-bold text-xl md:text-2xl mb-2">${r.title}</h3>
-                            <p class="text-zinc-300 text-base md:text-lg whitespace-pre-line leading-relaxed">${r.text}</p>
+                            <p class="text-zinc-200 text-base md:text-lg whitespace-pre-line leading-relaxed">${r.text}</p>
                         </div>`;
                 });
 
-                // FAQ
                 document.getElementById('title-faq').innerText = data.faq.sectionTitle;
                 const faqList = document.getElementById('faq-list');
                 data.faq.items.forEach(f => {
                     faqList.innerHTML += `
                         <div>
                             <h3 class="text-white font-bold text-xl md:text-2xl mb-3">${f.q}</h3>
-                            <p class="text-zinc-300 text-base md:text-lg leading-relaxed">${f.a}</p>
+                            <p class="text-zinc-200 text-base md:text-lg leading-relaxed">${f.a}</p>
                         </div>`;
                 });
 
-                // Footer
                 document.getElementById('footer-title').innerText = data.footer.title;
                 document.getElementById('footer-text').innerText = data.footer.text;
-                
                 const ctaBtn = document.getElementById('footer-cta');
                 ctaBtn.innerText = data.footer.cta;
                 ctaBtn.href = data.quizLink;
@@ -208,22 +194,44 @@
                 initScroll();
 
             } catch (error) {
-                console.error('Помилка:', error);
+                console.error('Error:', error);
             }
         }
 
         function initScroll() {
             sections = document.querySelectorAll('section');
-            const btnUp = document.getElementById('btn-up');
-            const btnDown = document.getElementById('btn-down');
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
             const floatingBrand = document.getElementById('floating-brand');
+            const dotsContainer = document.getElementById('progress-dots');
+
+            // Генерація прогрес-бару на основі кількості секцій
+            dotsContainer.innerHTML = '';
+            sections.forEach((_, i) => {
+                dotsContainer.innerHTML += `<div class="w-6 md:w-12 h-1 bg-zinc-800 transition-colors cursor-pointer" onclick="scrollToSection(${i})" id="dot-${i}"></div>`;
+            });
+
+            // Глобальна функція для кліку по точках
+            window.scrollToSection = (index) => {
+                sections[index].scrollIntoView({ behavior: 'smooth' });
+            };
             
             const updateState = () => {
-                btnUp.classList.toggle('opacity-50', currentIdx === 0);
-                btnUp.classList.toggle('pointer-events-none', currentIdx === 0);
+                btnPrev.disabled = currentIdx === 0;
                 
-                btnDown.classList.toggle('opacity-50', currentIdx === sections.length - 1);
-                btnDown.classList.toggle('pointer-events-none', currentIdx === sections.length - 1);
+                if (currentIdx === sections.length - 1) {
+                    btnNext.innerHTML = 'В анкету &rarr;';
+                } else {
+                    btnNext.innerHTML = 'Далі &rarr;';
+                }
+
+                for (let i = 0; i < sections.length; i++) {
+                    const dot = document.getElementById(`dot-${i}`);
+                    if (dot) {
+                        dot.classList.toggle('bg-white', i <= currentIdx);
+                        dot.classList.toggle('bg-zinc-800', i > currentIdx);
+                    }
+                }
 
                 floatingBrand.style.opacity = currentIdx === 0 ? '0' : '1';
             };
@@ -239,31 +247,27 @@
 
             sections.forEach(sec => observer.observe(sec));
 
-            // Обробка кнопок
-            btnUp.addEventListener('click', () => {
+            btnPrev.addEventListener('click', () => {
                 if (currentIdx > 0) sections[currentIdx - 1].scrollIntoView({ behavior: 'smooth' });
             });
 
-            btnDown.addEventListener('click', () => {
-                if (currentIdx < sections.length - 1) sections[currentIdx + 1].scrollIntoView({ behavior: 'smooth' });
+            btnNext.addEventListener('click', () => {
+                if (currentIdx < sections.length - 1) {
+                    sections[currentIdx + 1].scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    if (window.globalQuizLink) window.open(window.globalQuizLink, '_blank');
+                }
             });
 
-            // Перехоплення клавіатури
+            // Підтримка клавіатури залишається
             document.addEventListener('keydown', (e) => {
                 const keys = ['Space', 'ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft'];
+                if (keys.includes(e.code)) e.preventDefault();
                 
-                if (keys.includes(e.code)) {
-                    e.preventDefault();
-                }
-
                 if (['Space', 'ArrowDown', 'ArrowRight'].includes(e.code)) {
-                    if (currentIdx < sections.length - 1) {
-                        sections[currentIdx + 1].scrollIntoView({ behavior: 'smooth' });
-                    }
+                    if (currentIdx < sections.length - 1) sections[currentIdx + 1].scrollIntoView({ behavior: 'smooth' });
                 } else if (['ArrowUp', 'ArrowLeft'].includes(e.code)) {
-                    if (currentIdx > 0) {
-                        sections[currentIdx - 1].scrollIntoView({ behavior: 'smooth' });
-                    }
+                    if (currentIdx > 0) sections[currentIdx - 1].scrollIntoView({ behavior: 'smooth' });
                 }
             }, { passive: false });
         }
