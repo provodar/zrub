@@ -23,8 +23,11 @@
             scroll-snap-align: start;
             scroll-snap-stop: always;
         }
+
+        textarea {
+            resize: none;
+        }
     </style>
-    <!-- Meta Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -40,14 +43,11 @@
     <noscript><img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=948885934527561&ev=PageView&noscript=1"
     /></noscript>
-    <!-- End Meta Pixel Code -->
-</head>
+    </head>
 <body class="bg-zinc-950 text-zinc-100 font-sans antialiased selection:bg-zinc-700 selection:text-white">
 
-    <!-- Глобальна текстура дерева -->
     <div id="global-bg" class="fixed inset-0 z-[-1] bg-cover bg-center opacity-[0.12] grayscale pointer-events-none"></div>
 
-    <!-- Плаваючий брендинг (тільки на десктопі, з'являється після 1 екрану) -->
     <div id="floating-brand" class="fixed top-8 right-6 md:top-10 md:right-12 z-40 text-right transition-opacity duration-500 opacity-0 pointer-events-none hidden md:block">
         <div id="brand-title" class="text-xl md:text-2xl font-black uppercase tracking-widest text-white/50"></div>
         <div id="brand-subtitle" class="text-[10px] md:text-xs text-zinc-500 uppercase tracking-widest mt-1"></div>
@@ -55,7 +55,6 @@
 
     <div id="scroll-container" class="hidden-content relative w-full">
         
-        <!-- 01. Hero -->
         <section id="hero" class="min-h-[100dvh] flex flex-col justify-center px-6 pt-12 pb-24 md:px-12 border-b border-zinc-800/50 bg-cover bg-center relative">
             <div class="absolute inset-0 bg-zinc-950/40 z-0"></div>
             <div class="max-w-5xl mx-auto w-full relative z-10">
@@ -65,7 +64,6 @@
             </div>
         </section>
 
-        <!-- 02. Причина -->
         <section class="min-h-[100dvh] flex flex-col justify-center px-6 pt-12 pb-24 md:px-12 border-b border-zinc-800/50">
             <div class="max-w-6xl mx-auto w-full">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-center">
@@ -81,7 +79,6 @@
             </div>
         </section>
 
-        <!-- 03. Основа -->
         <section class="min-h-[100dvh] flex flex-col justify-center px-6 pt-12 pb-24 md:px-12 border-b border-zinc-800/50">
             <div class="max-w-5xl mx-auto w-full">
                 <h2 id="title-principles" class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-8 pl-2"></h2>
@@ -89,7 +86,6 @@
             </div>
         </section>
 
-        <!-- 04. Практика -->
         <section class="min-h-[100dvh] flex flex-col justify-center px-6 pt-12 pb-24 md:px-12 border-b border-zinc-800/50">
             <div class="max-w-6xl mx-auto w-full">
                 <h2 id="title-disciplines" class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-8 pl-2"></h2>
@@ -97,7 +93,6 @@
             </div>
         </section>
 
-        <!-- 05. Рамки -->
         <section class="min-h-[100dvh] flex flex-col justify-center px-6 pt-12 pb-24 md:px-12 border-b border-zinc-800/50 relative overflow-hidden bg-zinc-950">
             <div class="absolute bottom-0 left-0 right-0 h-[40dvh] z-0 bg-cover bg-bottom grayscale opacity-10 pointer-events-none" style="background-image: url('image2.jpg');"></div>
             <div class="max-w-5xl mx-auto w-full bg-zinc-950/80 backdrop-blur-md p-8 md:p-12 border border-zinc-800/50 rounded-sm relative z-10">
@@ -106,7 +101,6 @@
             </div>
         </section>
 
-        <!-- 06. FAQ -->
         <section class="min-h-[100dvh] flex flex-col justify-center px-6 py-12 md:px-12 border-b border-zinc-800/50">
             <div class="max-w-5xl mx-auto w-full bg-zinc-950/80 backdrop-blur-md p-8 md:p-12 border border-zinc-800/50 rounded-sm">
                 <h2 id="title-faq" class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-10"></h2>
@@ -114,16 +108,23 @@
             </div>
         </section>
 
-        <!-- 07. Footer -->
         <section class="min-h-[100dvh] flex flex-col items-center justify-center text-center px-6 pt-12 pb-24 bg-zinc-950/90 backdrop-blur-md">
-            <h2 id="footer-title" class="text-5xl md:text-6xl font-bold mb-6 text-white"></h2>
-            <p id="footer-text" class="text-xl text-zinc-300 mb-10"></p>
-            <a id="footer-cta" href="#" target="_blank" class="bg-white text-zinc-950 font-bold uppercase tracking-widest py-5 px-12 hover:bg-zinc-200 transition-colors shadow-lg"></a>
+            <h2 id="footer-title" class="text-4xl md:text-6xl font-bold mb-4 text-white"></h2>
+            <p id="footer-text" class="text-lg md:text-xl text-zinc-300 mb-8"></p>
+            
+            <form id="tg-form" class="flex flex-col gap-4 w-full max-w-md bg-zinc-900/50 p-6 rounded-sm border border-zinc-800">
+                <input type="text" id="tg-name" placeholder="Ім'я" required class="bg-zinc-950 text-white px-4 py-3 border border-zinc-700 focus:outline-none focus:border-zinc-400 rounded-sm transition-colors">
+                <input type="tel" id="tg-phone" placeholder="Телефон" required class="bg-zinc-950 text-white px-4 py-3 border border-zinc-700 focus:outline-none focus:border-zinc-400 rounded-sm transition-colors">
+                <input type="text" id="tg-telegram" placeholder="Телеграм (@username)" required class="bg-zinc-950 text-white px-4 py-3 border border-zinc-700 focus:outline-none focus:border-zinc-400 rounded-sm transition-colors">
+                <textarea id="tg-about" placeholder="Кілька слів про себе" rows="3" required class="bg-zinc-950 text-white px-4 py-3 border border-zinc-700 focus:outline-none focus:border-zinc-400 rounded-sm transition-colors"></textarea>
+                <textarea id="tg-interest" placeholder="Що зацікавило?" rows="3" required class="bg-zinc-950 text-white px-4 py-3 border border-zinc-700 focus:outline-none focus:border-zinc-400 rounded-sm transition-colors"></textarea>
+                
+                <button type="submit" id="submit-btn" class="bg-white text-zinc-950 font-bold uppercase tracking-widest py-4 px-8 hover:bg-zinc-200 transition-colors shadow-lg mt-2">Зареєструватись</button>
+            </form>
         </section>
         
     </div>
 
-    <!-- Нижня навігація -->
     <footer class="fixed bottom-0 left-0 w-full z-50 border-t border-zinc-800 bg-zinc-950/90 backdrop-blur-md p-4 md:px-12 flex justify-between items-center transition-opacity duration-500" id="bottom-nav">
         <button id="btn-prev" class="text-zinc-500 hover:text-white uppercase text-xs md:text-sm tracking-widest font-bold px-2 md:px-4 py-2 disabled:opacity-20 transition-colors">&larr; Назад</button>
         <div class="flex space-x-1 md:space-x-2" id="progress-dots"></div>
@@ -133,14 +134,11 @@
     <script>
         let currentIdx = 0;
         let sections = [];
-        window.globalQuizLink = "#";
 
         async function loadData() {
             try {
                 const response = await fetch('data.json');
                 const data = await response.json();
-
-                window.globalQuizLink = data.quizLink;
 
                 document.getElementById('brand-title').innerText = data.hero.title;
                 const shortSub = data.hero.subtitle.split('\n')[0].trim();
@@ -203,9 +201,6 @@
 
                 document.getElementById('footer-title').innerText = data.footer.title;
                 document.getElementById('footer-text').innerText = data.footer.text;
-                const ctaBtn = document.getElementById('footer-cta');
-                ctaBtn.innerText = data.footer.cta;
-                ctaBtn.href = data.quizLink;
 
                 document.getElementById('scroll-container').classList.add('visible-content');
                 initScroll();
@@ -222,13 +217,11 @@
             const floatingBrand = document.getElementById('floating-brand');
             const dotsContainer = document.getElementById('progress-dots');
 
-            // Генерація прогрес-бару на основі кількості секцій
             dotsContainer.innerHTML = '';
             sections.forEach((_, i) => {
                 dotsContainer.innerHTML += `<div class="w-6 md:w-12 h-1 bg-zinc-800 transition-colors cursor-pointer" onclick="scrollToSection(${i})" id="dot-${i}"></div>`;
             });
 
-            // Глобальна функція для кліку по точках
             window.scrollToSection = (index) => {
                 sections[index].scrollIntoView({ behavior: 'smooth' });
             };
@@ -237,7 +230,7 @@
                 btnPrev.disabled = currentIdx === 0;
                 
                 if (currentIdx === sections.length - 1) {
-                    btnNext.innerHTML = 'В анкету &rarr;';
+                    btnNext.innerHTML = 'Зареєструватись &uarr;';
                 } else {
                     btnNext.innerHTML = 'Далі &rarr;';
                 }
@@ -272,12 +265,13 @@
                 if (currentIdx < sections.length - 1) {
                     sections[currentIdx + 1].scrollIntoView({ behavior: 'smooth' });
                 } else {
-                    if (window.globalQuizLink) window.open(window.globalQuizLink, '_blank');
+                    document.getElementById('tg-name').focus();
                 }
             });
 
-            // Підтримка клавіатури залишається
             document.addEventListener('keydown', (e) => {
+                if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+
                 const keys = ['Space', 'ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft'];
                 if (keys.includes(e.code)) e.preventDefault();
                 
@@ -288,6 +282,50 @@
                 }
             }, { passive: false });
         }
+
+        // Логіка відправки форми в Telegram
+        document.getElementById('tg-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('submit-btn');
+            const originalText = btn.innerText;
+            btn.innerText = 'Відправка...';
+            btn.disabled = true;
+
+            const name = document.getElementById('tg-name').value;
+            const phone = document.getElementById('tg-phone').value;
+            const tg = document.getElementById('tg-telegram').value;
+            const about = document.getElementById('tg-about').value;
+            const interest = document.getElementById('tg-interest').value;
+
+            const message = `🔥 Нова заявка (ЗРУБ)!\n\n👤 Ім'я: ${name}\n📞 Телефон: ${phone}\n✈️ Телеграм: ${tg}\n📝 Про себе: ${about}\n🤔 Що зацікавило: ${interest}`;
+            const botToken = '8709307739:AAG52xZkklOG27inMqtCE1h5ZGKXH6Z-Cwk';
+            const chatId = '395864380';
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message
+                    })
+                });
+
+                if (response.ok) {
+                    window.location.href = 'success.html';
+                } else {
+                    alert('Помилка відправки. Будь ласка, спробуйте ще раз.');
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                alert('Помилка з\'єднання. Перевірте інтернет.');
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        });
 
         loadData();
     </script>
