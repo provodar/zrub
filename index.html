@@ -299,8 +299,23 @@
             const interest = document.getElementById('tg-interest').value;
             const sourceUrl = window.location.href;
             const userAgent = navigator.userAgent;
+            const referrer = document.referrer || 'Прямий захід';
+            const screenRes = `${window.screen.width}x${window.screen.height}`;
+            const lang = navigator.language || 'Невизначено';
 
-            const message = `🔥 Нова заявка (ЗРУБ)!\n\n👤 Ім'я: ${name}\n📞 Телефон: ${phone}\n✈️ Телеграм: ${tg}\n📝 Про себе: ${about}\n🤔 Що зацікавило: ${interest}\n🔗 Джерело: ${sourceUrl}\n📱 Пристрій: ${userAgent}`;
+            const message = `🔥 Нова заявка (ЗРУБ)!
+👤 Ім'я: ${name}
+📞 Телефон: ${phone}
+✈️ Телеграм: ${tg}
+📝 Про себе: ${about}
+🤔 Що зацікавило: ${interest}
+
+⚙️ Технічні дані:
+🔗 Джерело: ${sourceUrl}
+⬅️ Реферер: ${referrer}
+📱 Пристрій: ${userAgent}
+🖥 Екран: ${screenRes}
+🌍 Мова ОС: ${lang}`;
             const botToken = '8709307739:AAG52xZkklOG27inMqtCE1h5ZGKXH6Z-Cwk';
             const chatId = '395864380';
             const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
