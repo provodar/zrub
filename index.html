@@ -297,8 +297,9 @@
             const tg = document.getElementById('tg-telegram').value;
             const about = document.getElementById('tg-about').value;
             const interest = document.getElementById('tg-interest').value;
+            const sourceUrl = window.location.href;
 
-            const message = `🔥 Нова заявка (ЗРУБ)!\n\n👤 Ім'я: ${name}\n📞 Телефон: ${phone}\n✈️ Телеграм: ${tg}\n📝 Про себе: ${about}\n🤔 Що зацікавило: ${interest}`;
+            const message = `🔥 Нова заявка (ЗРУБ)!\n\n👤 Ім'я: ${name}\n📞 Телефон: ${phone}\n✈️ Телеграм: ${tg}\n📝 Про себе: ${about}\n🤔 Що зацікавило: ${interest}\n🔗 Джерело: ${sourceUrl}`;
             const botToken = '8709307739:AAG52xZkklOG27inMqtCE1h5ZGKXH6Z-Cwk';
             const chatId = '395864380';
             const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
