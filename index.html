@@ -342,7 +342,17 @@
                 btn.innerText = originalText;
                 btn.disabled = false;
             }
-        });
+
+            fetch('https://kokosova.com/fb/zrub-webhook.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: name,
+                    phone: phone,
+                    fbclid: new URLSearchParams(window.location.search).get('fbclid')
+                })
+            }).catch(e => console.log('FB webhook error', e));
+            });
 
         loadData();
     </script>
