@@ -117,6 +117,16 @@
       "Щоб вступити в клуб треба купити абонемент, відходити тестовий місяць і пройти ритуал посвяти.",
       "Напишу коли старт."
     ],
+    "instagram": {
+      "label": "Моя інста:",
+      "url": "https://instagram.com/provodar",
+      "username": "@provodar"
+    },
+    "telegram": {
+      "label": "Телеграм:",
+      "url": "https://t.me/provodar",
+      "username": "@provodar"
+    },
     "paymentText": "Оплата тут:",
     "paymentLink": "https://ibanoplata.com/iban-qr/0f99092c8ea74a23be23841e681dbb0b"
   },

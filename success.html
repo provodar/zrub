@@ -16,7 +16,7 @@
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '948885934527561');
         fbq('track', 'PageView');
-        fbq('track', 'Lead'); // Тригер успішної конверсії
+        fbq('track', 'Lead'); 
     </script>
     <noscript><img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=948885934527561&ev=PageView&noscript=1"
@@ -68,27 +68,37 @@
                 const data = await response.json();
                 
                 if (data.success) {
-                    // Заповнюємо текст
+                    
                     document.getElementById('success-title').innerText = data.success.title;
                     
                     const textContainer = document.getElementById('success-text');
+                    
                     data.success.paragraphs.forEach(p => {
                         const pEl = document.createElement('p');
                         pEl.innerText = p;
                         textContainer.appendChild(pEl);
                     });
 
-                    // Налаштовуємо лінк
+                    if (data.success.instagram) {
+                        const instaEl = document.createElement('p');
+                        instaEl.innerHTML = `${data.success.instagram.label} <a href="${data.success.instagram.url}" target="_blank" class="text-white underline hover:text-zinc-400 transition-colors">${data.success.instagram.username}</a>`;
+                        textContainer.appendChild(instaEl);
+                    }
+
+                    if (data.success.telegram) {
+                        const tgEl = document.createElement('p');
+                        tgEl.innerHTML = `${data.success.telegram.label} <a href="${data.success.telegram.url}" target="_blank" class="text-white underline hover:text-zinc-400 transition-colors">${data.success.telegram.username}</a>`;
+                        textContainer.appendChild(tgEl);
+                    }
+
                     document.getElementById('payment-label').innerText = data.success.paymentText;
                     const pSide = document.getElementById('payment-side');
                     const paymentLink = data.success.paymentLink;
                     pSide.href = paymentLink;
 
-                    // Вставляємо лінк в генератор QR-кодів
                     const qrImg = document.getElementById('qr-image');
                     qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(paymentLink)}`;
 
-                    // Показуємо контент
                     document.getElementById('content-container').classList.remove('opacity-0');
                     document.getElementById('content-container').classList.add('opacity-100');
                 }
