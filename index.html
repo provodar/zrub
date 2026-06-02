@@ -37,7 +37,7 @@
     <noscript><img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=948885934527561&ev=PageView&noscript=1"
     /></noscript>
-    </head>
+</head>
 <body class="bg-zinc-950 text-zinc-100 font-sans antialiased selection:bg-zinc-700 selection:text-white">
 
     <div id="global-bg" class="fixed inset-0 z-[-1] bg-cover bg-center opacity-[0.12] grayscale pointer-events-none"></div>
@@ -277,7 +277,7 @@
             }, { passive: false });
         }
 
-        // Логіка відправки форми в Telegram
+        // Оновлена логіка відправки форми на вебхук
         document.getElementById('tg-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -286,42 +286,24 @@
             btn.innerText = 'Відправка...';
             btn.disabled = true;
 
-            const name = document.getElementById('tg-name').value;
-            const phone = document.getElementById('tg-phone').value;
-            const tg = document.getElementById('tg-telegram').value;
-            const about = document.getElementById('tg-about').value;
-            const interest = document.getElementById('tg-interest').value;
-            const sourceUrl = window.location.href;
-            const userAgent = navigator.userAgent;
-            const referrer = document.referrer || 'Прямий захід';
-            const screenRes = `${window.screen.width}x${window.screen.height}`;
-            const lang = navigator.language || 'Невизначено';
-
-            const message = `🔥 Нова заявка (ЗРУБ)!
-👤 Ім'я: ${name}
-📞 Телефон: ${phone}
-✈️ Телеграм: ${tg}
-📝 Про себе: ${about}
-🤔 Що зацікавило: ${interest}
-
-⚙️ Технічні дані:
-🔗 Джерело: ${sourceUrl}
-⬅️ Реферер: ${referrer}
-📱 Пристрій: ${userAgent}
-🖥 Екран: ${screenRes}
-🌍 Мова ОС: ${lang}`;
-            const botToken = '8709307739:AAG52xZkklOG27inMqtCE1h5ZGKXH6Z-Cwk';
-            const chatId = '395864380';
-            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            const payload = {
+                name: document.getElementById('tg-name').value,
+                phone: document.getElementById('tg-phone').value,
+                telegram: document.getElementById('tg-telegram').value,
+                about: document.getElementById('tg-about').value,
+                interest: document.getElementById('tg-interest').value,
+                sourceUrl: window.location.href,
+                referrer: document.referrer || 'Прямий заход',
+                screenRes: `${window.screen.width}x${window.screen.height}`,
+                lang: navigator.language || 'Невизначено',
+                fbclid: new URLSearchParams(window.location.search).get('fbclid')
+            };
 
             try {
-                const response = await fetch(url, {
+                const response = await fetch('https://kokosova.com/fb/zrub-webhook.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: chatId,
-                        text: message
-                    })
+                    body: JSON.stringify(payload)
                 });
 
                 if (response.ok) {
@@ -336,17 +318,7 @@
                 btn.innerText = originalText;
                 btn.disabled = false;
             }
-
-            fetch('https://kokosova.com/fb/zrub-webhook.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name: name,
-                    phone: phone,
-                    fbclid: new URLSearchParams(window.location.search).get('fbclid')
-                })
-            }).catch(e => console.log('FB webhook error', e));
-            });
+        });
 
         loadData();
     </script>
