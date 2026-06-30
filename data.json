@@ -13,7 +13,7 @@
     "sectionTitle": "Основа",
     "items": [
       {
-        "title": "Мережа",
+        "title": "Підтримка",
         "text": "Ізоляція з'їдає ресурс. Чоловікам потрібна взаємодія та автономна мережа рівних."
       },
       {
@@ -114,20 +114,21 @@
     "title": "Є.",
     "paragraphs": [
       "Перегляну твою анкету і напишу в телеграм.",
-      "Щоб вступити в клуб треба купити абонемент, відходити тестовий місяць і пройти ритуал посвяти.",
+      "Станом на зараз набір закритий, але можу додати тебе в лист очікування.",
+      "Щоб вступити в клуб треба купити абонемент, дочекатися старту нового набору, відходити тестовий місяць і пройти ритуал посвяти.",
       "Напишу коли старт."
     ],
     "instagram": {
-      "label": "Моя інста:",
-      "url": "https://instagram.com/provodar",
-      "username": "@provodar"
+      "label": "Інста:",
+      "url": "https://instagram.com/zrub.men",
+      "username": "@zrub.men"
     },
     "telegram": {
       "label": "Телеграм:",
-      "url": "https://t.me/provodar",
-      "username": "@provodar"
+      "url": "https://t.me/zrubnetworklviv",
+      "username": "@zrubnetworklviv"
     },
-    "paymentText": "Оплата тут:",
+    "paymentText": "Оплата за місяць (тут:",
     "paymentLink": "https://ibanoplata.com/iban-qr/0f99092c8ea74a23be23841e681dbb0b"
   },
   "quizLink": "https://tally.so/r/681xxO"
