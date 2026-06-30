@@ -106,8 +106,8 @@
     ]
   },
   "footer": {
-    "title": "Готовий?",
-    "text": "Реєструйся:",
+    "title": "Набір закритий",
+    "text": "Реєструйся у лист очікування:",
     "cta": "Анкета"
   },
   "success": {
@@ -128,7 +128,7 @@
       "url": "https://t.me/zrubnetworklviv",
       "username": "@zrubnetworklviv"
     },
-    "paymentText": "Оплата за місяць (тут:",
+    "paymentText": "Оплата тут (лист очікування):",
     "paymentLink": "https://ibanoplata.com/iban-qr/0f99092c8ea74a23be23841e681dbb0b"
   },
   "quizLink": "https://tally.so/r/681xxO"
